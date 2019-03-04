@@ -5,7 +5,16 @@
              x:Class="ProjetDevMob.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
 
-	</Application.Resources>
+            <!-- Styles -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="red"/>
+                <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+            <!-- Styles -->
+
+        </ResourceDictionary>
+
+    </Application.Resources>
 </prism:PrismApplication>

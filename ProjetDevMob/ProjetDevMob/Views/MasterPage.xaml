@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="ProjetDevMob.Views.MasterPage"
+                  Title="{Binding Title}">
+
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <StackLayout BackgroundColor="White">
+                <Image Source="logo_appli.png"
+                       WidthRequest="200"
+                       HeightRequest="200"/>
+                <Label
+                    Text="Carte"
+                    FontSize="Large">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding CommandGoAccueil}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Button Text="&#xf015; Accueil" 
+                   FontSize="35"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   BackgroundColor="Black"
+                   Margin="0, 50, 0, 0"
+                   Command="{Binding CommandGoAccueil}">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String"
+                        Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+                    </Button.FontFamily>   
+                    </Button>
+                
+                <ContentView HeightRequest="1" BackgroundColor="Gray" />
+                
+                <Label Text="Application" 
+                       FontSize="Large" 
+                       BackgroundColor="White" />
+                <Button Text="Map" FontSize="Medium" 
+                        BackgroundColor="White"  Command="{Binding CommandGoMap}" />
+                <Button Text="Enregistrement" 
+                        FontSize="Medium" 
+                        BackgroundColor="White"  Command="{Binding CommandGoEnregistrement}" />
+                <Button Text="Nouveau" 
+                        FontSize="Medium" 
+                        BackgroundColor="White"  Command="{Binding CommandGoNouveau}" />
+                <Button Text="TestCamera" 
+                        FontSize="Medium" 
+                        BackgroundColor="White"  Command="{Binding CommandGoCamera}" />
+                
+                <ContentView HeightRequest="1" BackgroundColor="Gray" />
+
+                <Button Text="Bonus" FontSize="Large" BackgroundColor="White"  Command="{Binding CommandGoBonus}" />
+
+                <Button Text="&#xf015; Bonus" 
+                   FontSize="35"
+                   TextColor="SkyBlue"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+                   <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String"
+                        Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+                    </Button.FontFamily>
+                </Button>
+                
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+</MasterDetailPage>

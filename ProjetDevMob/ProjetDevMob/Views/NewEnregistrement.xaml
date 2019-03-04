@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ProjetDevMob.Views.NewEnregistrement"
+             Title="{Binding Title}">
+
+    <StackLayout
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        Padding="30, 50, 30, 0">
+
+        <BoxView 
+            Color="Gainsboro"
+            CornerRadius="10"
+            WidthRequest="480"
+            HeightRequest="270"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button Text="&#xf067;" 
+                   FontSize="35"
+                   TextColor="#ff5300"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+            <Button.FontFamily>
+                <OnPlatform x:TypeArguments="x:String"
+                        Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+            </Button.FontFamily>
+        </Button>
+        <Entry
+            Text="{Binding Name}"
+            TextColor="Green"
+            HorizontalOptions="FillAndExpand"
+            Placeholder="Nom"
+            Margin="0,60,5,0"
+            FontSize="35"/>
+           
+        <Editor
+            Text="{Binding Desc}"
+            Placeholder="Description"
+            Margin="0, 45, 0, 0"
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="200"
+            
+            FontSize="35"/>
+
+        <Label
+            Text="Tag "
+            Margin="0, 45, 0, 0"
+            FontSize="28"/>
+
+        <Picker
+            ItemsSource="{Binding ListTags}"
+            SelectedItem="{Binding BaseIngredient}"
+            HorizontalOptions="FillAndExpand"
+            Title="None"
+            FontSize="35">
+            <Picker.Items>
+                <x:String> Drink </x:String>
+                <x:String> Food </x:String>
+                <x:String> ToSee </x:String>
+            </Picker.Items>
+        </Picker>
+
+
+        <Button 
+            Text="&#xf0c7;" 
+            FontSize="50"
+            TextColor="Red"
+            BackgroundColor="Transparent"
+            Margin="0, 78, 0, 0"
+            HorizontalOptions="EndAndExpand">
+            <Button.FontFamily>
+                <OnPlatform x:TypeArguments="x:String"
+                    Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+            </Button.FontFamily>
+        </Button>
+
+
+    </StackLayout>
+  
+</ContentPage>
+    
