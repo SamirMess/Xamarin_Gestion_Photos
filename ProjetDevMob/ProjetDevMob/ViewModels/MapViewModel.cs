@@ -13,6 +13,7 @@ namespace ProjetDevMob.ViewModels
             : base(navigationService)
         {
             Title = "Map";
+
         }
-	}
+    }
 }
