@@ -6,11 +6,13 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProjetDevMob.Views.Map"
              Title="{Binding Title}">
-            <StackLayout VerticalOptions="StartAndExpand" Padding="30">
-                <maps:Map WidthRequest="320" HeightRequest="600"
-                    x:Name="MyMap"
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
+                <!--<maps:Map WidthRequest="320" HeightRequest="600"
+                    x:Name="mainMap"
                     IsShowingUser="true"
-                    MapType="Street"
-                />
-            </StackLayout>
+                    MapType="Hybrid"
+                />-->
+        <ContentView Content="{Binding mainMap}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+
 </ContentPage>
