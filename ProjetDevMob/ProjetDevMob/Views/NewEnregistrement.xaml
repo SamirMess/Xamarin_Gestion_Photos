@@ -11,24 +11,64 @@
         VerticalOptions="FillAndExpand"
         Padding="30, 50, 30, 0">
 
-        <BoxView 
-            Color="Gainsboro"
-            CornerRadius="10"
+        <Grid
+            BackgroundColor="#E5E8E8"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="270"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="480"/>
+            </Grid.ColumnDefinitions>
+
+            <Image HorizontalOptions="Center"
+                 Source="{Binding PhotoImage}"
+                 Grid.Row="0"
+                 Grid.Column="0"/>
+            <Label 
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Text="&#xf030;"
+                FontSize="60"
+                TextColor="red"
+                Grid.Row="0"
+                Grid.Column="0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                            Command="{Binding PrendrePhoto}"/>
+                </Label.GestureRecognizers>
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String"
+                        Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+                </Label.FontFamily>
+            </Label>
+        </Grid>
+        
+        <!--<Label
+            Text="&#xf030;"
+            BackgroundColor="#E5E8E8"
+            FontSize="60"
+            TextColor="red"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
             WidthRequest="480"
             HeightRequest="270"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
-        <Button Text="&#xf067;" 
-                   FontSize="35"
-                   TextColor="#ff5300"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center">
-            <Button.FontFamily>
+            HorizontalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer
+                            Command="{Binding PrendrePhoto}"/>
+            </Label.GestureRecognizers>
+            <Label.FontFamily>
                 <OnPlatform x:TypeArguments="x:String"
                         Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
-            </Button.FontFamily>
-        </Button>
+            </Label.FontFamily>
+        </Label>-->
+
         <Entry
             Text="{Binding Name}"
             TextColor="Green"
