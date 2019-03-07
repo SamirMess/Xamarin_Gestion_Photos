@@ -16,18 +16,14 @@
             HorizontalOptions="Center"
             VerticalOptions="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="270"/>
+                <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="480"/>
+                <ColumnDefinition Width="{Binding LongueurImage}"/>
             </Grid.ColumnDefinitions>
 
-            <Image HorizontalOptions="Center"
-                 Source="{Binding PhotoImage}"
-                 Grid.Row="0"
-                 Grid.Column="0"/>
-            <Label 
+            <Label
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
@@ -46,6 +42,12 @@
                         Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
                 </Label.FontFamily>
             </Label>
+            
+            <Image 
+                HorizontalOptions="Center"
+                Source="{Binding PhotoImage}"
+                Grid.Row="0"
+                Grid.Column="0"/>
         </Grid>
         
         <!--<Label
@@ -78,7 +80,7 @@
             FontSize="35"/>
            
         <Editor
-            Text="{Binding Desc}"
+            Text="{Binding Description}"
             Placeholder="Description"
             Margin="0, 45, 0, 0"
             HorizontalOptions="FillAndExpand"
@@ -93,7 +95,7 @@
 
         <Picker
             ItemsSource="{Binding ListTags}"
-            SelectedItem="{Binding BaseIngredient}"
+            SelectedItem="{Binding Tag}"
             HorizontalOptions="FillAndExpand"
             Title="None"
             FontSize="35">
@@ -110,6 +112,7 @@
             FontSize="50"
             TextColor="Red"
             BackgroundColor="Transparent"
+            Command="{Binding CommandAddEnreg}"
             Margin="0, 78, 0, 0"
             HorizontalOptions="EndAndExpand">
             <Button.FontFamily>

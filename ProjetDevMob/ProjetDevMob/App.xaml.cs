@@ -39,6 +39,7 @@ namespace ProjetDevMob
             containerRegistry.RegisterForNavigation<NewEnregistrement, NewEnregistrementViewModel>();
             containerRegistry.RegisterForNavigation<TestCamera, TestCameraViewModel>();
             containerRegistry.RegisterForNavigation<Map, MapViewModel>();
+            containerRegistry.RegisterForNavigation<Enregistrement, EnregistrementViewModel>();
         }
     }
 
