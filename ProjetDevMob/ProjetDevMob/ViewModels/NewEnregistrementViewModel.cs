@@ -73,7 +73,7 @@ namespace ProjetDevMob.ViewModels
             Title = "Nouveau";
             PrendrePhoto = new DelegateCommand(prendrePhotoAsync);
             //LongueurImage = "auto";
-            CommandAddEnreg = new DelegateCommand(AddEnregAsync, CanAddEnreg).ObservesProperty(() => Name).ObservesProperty(() => Description).ObservesProperty(() => Tag);
+            CommandAddEnreg = new DelegateCommand(AddEnregAsync, CanAddEnreg).ObservesProperty(() => Name).ObservesProperty(() => Description).ObservesProperty(() => Tag).ObservesProperty(() => PhotoImage);
         }
 
         private async void prendrePhotoAsync()
@@ -102,13 +102,11 @@ namespace ProjetDevMob.ViewModels
         private async void AddEnregAsync()
         {
             
-            var answer = await App.Current.MainPage.DisplayAlert("Question?", "Voulez-vous vraiment enregistrer ?", "Yes", "No");
-                Debug.WriteLine("Answer: " + answer);
-            
-            if (answer)
-            {
-                //if(PhotoImage != null)
-                //{
+         
+                var answer = await App.Current.MainPage.DisplayAlert("Question?", "Voulez-vous vraiment enregistrer ?", "Yes", "No");
+
+                if (answer)
+                {
                     var locator = CrossGeolocator.Current;
                     var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1000));
                     var placemarks = await Geocoding.GetPlacemarksAsync(48.862524, 2.208973); // position.Latitude, position.Longitude
@@ -122,14 +120,7 @@ namespace ProjetDevMob.ViewModels
                     Enregistrement Enreg = new Enregistrement(Name, Description, Tag, ImageName, position.Latitude, position.Longitude, adress);
                     _liteDBClient.InsertObjectInDB<Enregistrement>(Enreg, _dbCollectionEnreg);
                     await NavigationService.GoBackAsync();
-                //}
-                //else
-                //{
-                //    await App.Current.MainPage.DisplayAlert("Question?", "Voulez-vous vraiment dddddd ?", "Yes", "No");
-
-                //}
-            }
-            
+                }
         }
 
         private bool CanAddEnreg()
@@ -146,15 +137,7 @@ namespace ProjetDevMob.ViewModels
             if (PhotoImage == null)
                 isValid = false;
 
-            if (!isValid)
-            {
-                App.Current.MainPage.DisplayAlert("Question?", "Voulez-vous vraiment dchammmmmmmppppp ?", "Yes", "No");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return isValid;
         }
 
     }
