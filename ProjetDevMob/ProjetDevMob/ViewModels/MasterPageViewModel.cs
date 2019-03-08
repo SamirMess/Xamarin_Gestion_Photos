@@ -13,6 +13,7 @@ namespace ProjetDevMob.ViewModels
         public DelegateCommand CommandGoNouveau { get; private set; }
         public DelegateCommand CommandGoCamera { get; private set; }
         public DelegateCommand CommandGoMap { get; private set; }
+        public DelegateCommand CommandGoEnregistrements { get; private set; }
 
         public MasterPageViewModel(INavigationService navigationService)
             : base(navigationService)
@@ -22,6 +23,7 @@ namespace ProjetDevMob.ViewModels
             CommandGoNouveau = new DelegateCommand(commandGoNouveau);
             CommandGoCamera = new DelegateCommand(commandGoCamera);
             CommandGoMap = new DelegateCommand(commandGoMap);
+            CommandGoEnregistrements = new DelegateCommand(commandGoEnregistrements);
         }
 
         private void commandGoAccueil()
@@ -40,6 +42,10 @@ namespace ProjetDevMob.ViewModels
         private void commandGoMap()
         {
             NavigationService.NavigateAsync("NavigationPage/Map");
+        }
+        private void commandGoEnregistrements()
+        {
+            NavigationService.NavigateAsync("NavigationPage/Enregistrements");
         }
     }
 }

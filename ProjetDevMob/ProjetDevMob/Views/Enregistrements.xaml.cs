@@ -2,9 +2,9 @@
 
 namespace ProjetDevMob.Views
 {
-    public partial class Enregistrement : ContentPage
+    public partial class Enregistrements : ContentPage
     {
-        public Enregistrement()
+        public Enregistrements()
         {
             InitializeComponent();
         }

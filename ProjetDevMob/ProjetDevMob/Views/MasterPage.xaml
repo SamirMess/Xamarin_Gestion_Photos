@@ -13,14 +13,6 @@
                 <Image Source="logo_appli.png"
                        WidthRequest="200"
                        HeightRequest="200"/>
-                <Label
-                    Text="Carte"
-                    FontSize="Large">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Command="{Binding CommandGoAccueil}"/>
-                    </Label.GestureRecognizers>
-                </Label>
 
                 <Button Text="&#xf015; Accueil" 
                    FontSize="35"
@@ -45,14 +37,11 @@
                         BackgroundColor="White"  Command="{Binding CommandGoMap}" />
                 <Button Text="Enregistrement" 
                         FontSize="Medium" 
-                        BackgroundColor="White"  Command="{Binding CommandGoEnregistrement}" />
+                        BackgroundColor="White"  Command="{Binding CommandGoEnregistrements}" />
                 <Button Text="Nouveau" 
                         FontSize="Medium" 
                         BackgroundColor="White"  Command="{Binding CommandGoNouveau}" />
-                <Button Text="TestCamera" 
-                        FontSize="Medium" 
-                        BackgroundColor="White"  Command="{Binding CommandGoCamera}" />
-                
+
                 <ContentView HeightRequest="1" BackgroundColor="Gray" />
 
                 <Button Text="Bonus" FontSize="Large" BackgroundColor="White"  Command="{Binding CommandGoBonus}" />
