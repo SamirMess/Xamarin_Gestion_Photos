@@ -14,6 +14,7 @@ namespace ProjetDevMob.ViewModels
 	public class EnregistrementsViewModel : ViewModelBase
 	{
 
+
         private IEnregistrementService _enregistrementService;
 
         private ObservableCollection<Enregistrement> _enregistrements;
@@ -38,6 +39,7 @@ namespace ProjetDevMob.ViewModels
         {
             base.OnNavigatedTo(parameters);
             Enregistrements = new ObservableCollection<Enregistrement>(_enregistrementService.GetEnregistrements());
+            // Date = Enregistrements[4].ImageName;
         }
 
 		

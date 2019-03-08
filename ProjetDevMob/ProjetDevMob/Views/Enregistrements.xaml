@@ -63,6 +63,7 @@
                         </ViewCell.ContextActions>
 
                         <StackLayout
+                            Margin="0, 20, 0, 10"
                             BackgroundColor="Azure"
                             Orientation="Horizontal"
                             HorizontalOptions="FillAndExpand">
@@ -76,12 +77,13 @@
                                     <ColumnDefinition Width="400" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                
-                                <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="Red" WidthRequest="80" HeightRequest="80"/>
+
+                                <!--<Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="red" WidthRequest="80" HeightRequest="80"/>-->
+                                <Image Grid.Row="0" Grid.RowSpan="2" BackgroundColor="red" Grid.Column="0" Source="{Binding Test}"  HeightRequest="80"/>
 
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"  FontSize="Large"/>
 
-                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding Date}"  HorizontalOptions="End" FontSize="Large"/>
+                                <Label BackgroundColor="Green" WidthRequest="200" Grid.Row="0" Grid.Column="2" Text="{Binding Date}"  HorizontalOptions="End" FontSize="Large"/>
 
                                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Tag}" FontSize="Large"/>
                 

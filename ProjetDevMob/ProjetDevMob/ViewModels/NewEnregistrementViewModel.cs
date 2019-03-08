@@ -84,9 +84,9 @@ namespace ProjetDevMob.ViewModels
 
         private async void prendrePhotoAsync()
         {
-            string dateTime = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+            string dateTime = DateTime.Now.ToString("yyyy-dd-M_HH-mm-ss");
             await CrossMedia.Current.Initialize();
-            ImageName = dateTime + ".jpg"; 
+            ImageName = dateTime + ".jpg";
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 Directory = "TestPhoto",
@@ -94,6 +94,8 @@ namespace ProjetDevMob.ViewModels
             });
             if (file != null)
             {
+                //ImageSource test = ImageSource.FromFile("TestPhoto/" + ImageName);
+
 
                 PhotoImage = ImageSource.FromStream(() =>
                 {
