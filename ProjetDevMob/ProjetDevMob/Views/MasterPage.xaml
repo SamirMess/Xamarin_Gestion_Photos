@@ -15,47 +15,44 @@
                        HeightRequest="200"/>
 
                 <Button Text="&#xf015; Accueil" 
-                   FontSize="35"
-                   TextColor="White"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   BackgroundColor="White"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
-                   BackgroundColor="Black"
                    Margin="0, 50, 0, 0"
                    Command="{Binding CommandGoAccueil}">
                     <Button.FontFamily>
                         <OnPlatform x:TypeArguments="x:String"
                         Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
                     </Button.FontFamily>   
-                    </Button>
+                </Button>
                 
                 <ContentView HeightRequest="1" BackgroundColor="Gray" />
-                
-                <Label Text="Application" 
-                       FontSize="Large" 
-                       BackgroundColor="White" />
-                <Button Text="Map" FontSize="Medium" 
-                        BackgroundColor="White"  Command="{Binding CommandGoMap}" />
+
+                <Button Text="Map" 
+                        FontSize="Medium" 
+                        BackgroundColor="White" 
+                        Margin="0, 30, 0, 0"
+                        Command="{Binding CommandGoMap}" />
                 <Button Text="Enregistrement" 
                         FontSize="Medium" 
-                        BackgroundColor="White"  Command="{Binding CommandGoEnregistrements}" />
+                        BackgroundColor="White"  
+                        Command="{Binding CommandGoEnregistrements}" />
                 <Button Text="Nouveau" 
                         FontSize="Medium" 
-                        BackgroundColor="White"  Command="{Binding CommandGoNouveau}" />
+                        BackgroundColor="White"  
+                        Margin="0, 0, 0, 30"
+                        Command="{Binding CommandGoNouveau}" />
 
                 <ContentView HeightRequest="1" BackgroundColor="Gray" />
 
-                <Button Text="Bonus" FontSize="Large" BackgroundColor="White"  Command="{Binding CommandGoBonus}" />
+                <Button 
+                    Text="Bonus" 
+                    FontSize="Large" 
+                    BackgroundColor="White"  
+                    Command="{Binding CommandGoBonus}" />
 
-                <Button Text="&#xf015; Bonus" 
-                   FontSize="35"
-                   TextColor="SkyBlue"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center">
-                   <Button.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String"
-                        Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
-                    </Button.FontFamily>
-                </Button>
                 
             </StackLayout>
         </ContentPage>

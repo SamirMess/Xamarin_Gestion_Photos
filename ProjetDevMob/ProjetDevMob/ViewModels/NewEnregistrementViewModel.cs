@@ -122,8 +122,10 @@ namespace ProjetDevMob.ViewModels
                     {
                         adress = placemark.FeatureName + " " + placemark.Thoroughfare + " " + ", " + placemark.PostalCode + " " + placemark.Locality + " - " + placemark.CountryName;
                     }
+                    DateTime heurrr = DateTime.Now;
+                    string heure = heurrr.Hour.ToString() + "h" + heurrr.Minute.ToString();
 
-                    Enregistrement Enreg = new Enregistrement(Name, Description, Tag, ImageName, position.Latitude, position.Longitude, adress);
+                    Enregistrement Enreg = new Enregistrement(Name, Description, Tag, ImageName, position.Latitude, position.Longitude, adress, heure);
                     _enregistrementService.AddEnregistrement(Enreg);
                     UserDialogs.Instance.Toast("Enregistrement avec succès!");
                     resetInputs();
