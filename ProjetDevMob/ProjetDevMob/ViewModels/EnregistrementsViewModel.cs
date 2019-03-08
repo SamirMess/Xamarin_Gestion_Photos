@@ -34,12 +34,12 @@ namespace ProjetDevMob.ViewModels
             Enregistrements = new ObservableCollection<Enregistrement>();
         }
 
-        
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
             Enregistrements = new ObservableCollection<Enregistrement>(_enregistrementService.GetEnregistrements());
         }
+
 		
 		private void PizzaDetails(Enregistrement enregSelected)
         {
@@ -47,5 +47,7 @@ namespace ProjetDevMob.ViewModels
             navigationParam.Add("Enregistrement", enregSelected);
             NavigationService.NavigateAsync("EnregistrementDetails", navigationParam);
         }
+
+
     }
 }
