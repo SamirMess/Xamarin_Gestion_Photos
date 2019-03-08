@@ -39,7 +39,7 @@ namespace ProjetDevMob
             containerRegistry.RegisterForNavigation<NewEnregistrement, NewEnregistrementViewModel>();
             containerRegistry.RegisterForNavigation<Map, MapViewModel>();
             containerRegistry.RegisterForNavigation<Enregistrements, EnregistrementsViewModel>();
-        }
+            containerRegistry.RegisterForNavigation<EnregistrementDetails, EnregistrementDetailsViewModel>();        }
     }
 
     internal class LoginRegister : Page

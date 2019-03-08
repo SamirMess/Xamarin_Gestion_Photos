@@ -32,6 +32,14 @@ namespace ProjetDevMob.ViewModels
             Title = "Enregistrements";
             _enregs = _liteDBClient.GetCollectionFromDB<Enregistrement>(_dbCollectionEnreg);
             Enregistrements = new ObservableCollection<Enregistrement>(_enregs);
+            CommandEnregDetails = new DelegateCommand<Enregistrement>(PizzaDetails);
         }
-	}
+
+        private void PizzaDetails(Enregistrement enregSelected)
+        {
+            var navigationParam = new NavigationParameters();
+            navigationParam.Add("Enregistrement", enregSelected);
+            NavigationService.NavigateAsync("EnregistrementDetails", navigationParam);
+        }
+    }
 }
