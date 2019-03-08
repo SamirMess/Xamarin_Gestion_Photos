@@ -1,4 +1,5 @@
-﻿using Plugin.Geolocator;
+﻿using Acr.UserDialogs;
+using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Plugin.Media;
 using Prism.Commands;
@@ -109,7 +110,7 @@ namespace ProjetDevMob.ViewModels
                 {
                     var locator = CrossGeolocator.Current;
                     var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1000));
-                    var placemarks = await Geocoding.GetPlacemarksAsync(48.862524, 2.208973); // position.Latitude, position.Longitude
+                    var placemarks = await Geocoding.GetPlacemarksAsync(position.Latitude, position.Longitude); // position.Latitude, position.Longitude
                     string adress = "";
                     var placemark = placemarks?.FirstOrDefault();
                     if (placemark != null)
@@ -119,7 +120,8 @@ namespace ProjetDevMob.ViewModels
 
                     Enregistrement Enreg = new Enregistrement(Name, Description, Tag, ImageName, position.Latitude, position.Longitude, adress);
                     _liteDBClient.InsertObjectInDB<Enregistrement>(Enreg, _dbCollectionEnreg);
-                    await NavigationService.GoBackAsync();
+                    UserDialogs.Instance.Toast("Enregistrement avec succès!");
+                    resetInputs();
                 }
         }
 
@@ -138,6 +140,14 @@ namespace ProjetDevMob.ViewModels
                 isValid = false;
 
             return isValid;
+        }
+
+        private void resetInputs()
+        {
+            Name = null;
+            Description = null;
+            Tag = null;
+            PhotoImage = null;
         }
 
     }
