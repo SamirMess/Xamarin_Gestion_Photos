@@ -7,6 +7,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using ProjetDevMob.Client;
 using ProjetDevMob.Models;
+using ProjetDevMob.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,9 +20,10 @@ namespace ProjetDevMob.ViewModels
 {
 	public class NewEnregistrementViewModel : ViewModelBase
     {
+
         public List<string> ListTags = new List<string>() {"Drink", "Food", "ToSee" };
-        private LiteDBClient _liteDBClient = new LiteDBClient();
-        private string _dbCollectionEnreg = "collectionEnreg";
+        //private LiteDBClient _liteDBClient = new LiteDBClient();
+        //private string _dbCollectionEnreg = "collectionEnreg";
 
         public DelegateCommand PrendrePhoto { get; private set; }
         public DelegateCommand CommandAddEnreg { get; private set; }
@@ -68,9 +70,12 @@ namespace ProjetDevMob.ViewModels
             set { SetProperty(ref _imageName, value); }
         }
 
-        public NewEnregistrementViewModel(INavigationService navigationService) 
+        private IEnregistrementService _enregistrementService;
+
+        public NewEnregistrementViewModel(INavigationService navigationService, IEnregistrementService enregistrementService) 
             : base(navigationService)
         {
+            _enregistrementService = enregistrementService;
             Title = "Nouveau";
             PrendrePhoto = new DelegateCommand(prendrePhotoAsync);
             //LongueurImage = "auto";
@@ -102,8 +107,6 @@ namespace ProjetDevMob.ViewModels
 
         private async void AddEnregAsync()
         {
-            
-         
                 var answer = await App.Current.MainPage.DisplayAlert("Question?", "Voulez-vous vraiment enregistrer ?", "Yes", "No");
 
                 if (answer)
@@ -119,7 +122,8 @@ namespace ProjetDevMob.ViewModels
                     }
 
                     Enregistrement Enreg = new Enregistrement(Name, Description, Tag, ImageName, position.Latitude, position.Longitude, adress);
-                    _liteDBClient.InsertObjectInDB<Enregistrement>(Enreg, _dbCollectionEnreg);
+                    //_liteDBClient.InsertObjectInDB<Enregistrement>(Enreg, _dbCollectionEnreg);
+                    _enregistrementService.AddEnregistrement(Enreg);
                     UserDialogs.Instance.Toast("Enregistrement avec succès!");
                     resetInputs();
                 }

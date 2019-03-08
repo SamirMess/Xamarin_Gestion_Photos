@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using ProjetDevMob.Client;
 using ProjetDevMob.Models;
+using ProjetDevMob.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,10 +13,8 @@ namespace ProjetDevMob.ViewModels
 {
 	public class EnregistrementsViewModel : ViewModelBase
 	{
-        private LiteDBClient _liteDBClient = new LiteDBClient();
-        private string _dbCollectionEnreg = "collectionEnreg";
-        private List<Enregistrement> _enregs = new List<Enregistrement>();
-        
+
+        private IEnregistrementService _enregistrementService;
 
         private ObservableCollection<Enregistrement> _enregistrements;
         public ObservableCollection<Enregistrement> Enregistrements
@@ -26,16 +25,23 @@ namespace ProjetDevMob.ViewModels
 
         public DelegateCommand<Enregistrement> CommandEnregDetails { get; private set; }
 
-        public EnregistrementsViewModel(INavigationService navigationService)
+        public EnregistrementsViewModel(INavigationService navigationService, IEnregistrementService enregistrementService)
             : base(navigationService)
         {
+            _enregistrementService = enregistrementService;
             Title = "Enregistrements";
-            _enregs = _liteDBClient.GetCollectionFromDB<Enregistrement>(_dbCollectionEnreg);
-            Enregistrements = new ObservableCollection<Enregistrement>(_enregs);
             CommandEnregDetails = new DelegateCommand<Enregistrement>(PizzaDetails);
+            Enregistrements = new ObservableCollection<Enregistrement>();
         }
 
-        private void PizzaDetails(Enregistrement enregSelected)
+        
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            Enregistrements = new ObservableCollection<Enregistrement>(_enregistrementService.GetEnregistrements());
+        }
+		
+		private void PizzaDetails(Enregistrement enregSelected)
         {
             var navigationParam = new NavigationParameters();
             navigationParam.Add("Enregistrement", enregSelected);
