@@ -12,15 +12,14 @@
         Padding="30, 50, 30, 0">
 
         <Grid
-            BackgroundColor="#E5E8E8"
             HorizontalOptions="Center"
             VerticalOptions="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="300"/>
+                <RowDefinition Height="400"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="500"/>
             </Grid.ColumnDefinitions>
 
             <Label
@@ -38,6 +37,8 @@
                         Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
                 </Label.FontFamily>
             </Label>
+            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BackgroundColor="red"  Source="{Binding ImageName}"  HeightRequest="200"/>
+            <Label HorizontalOptions="End" Grid.Row="2" Grid.Column="0" Text="TEST"></Label>
         </Grid>
 
     </StackLayout>

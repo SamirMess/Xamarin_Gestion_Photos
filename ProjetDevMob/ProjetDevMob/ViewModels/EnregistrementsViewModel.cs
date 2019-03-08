@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace ProjetDevMob.ViewModels
 {
@@ -31,7 +32,7 @@ namespace ProjetDevMob.ViewModels
         {
             _enregistrementService = enregistrementService;
             Title = "Enregistrements";
-            CommandEnregDetails = new DelegateCommand<Enregistrement>(PizzaDetails);
+            CommandEnregDetails = new DelegateCommand<Enregistrement>(EnregistrementDetails);
             Enregistrements = new ObservableCollection<Enregistrement>();
         }
 
@@ -43,13 +44,16 @@ namespace ProjetDevMob.ViewModels
         }
 
 		
-		private void PizzaDetails(Enregistrement enregSelected)
+		private void EnregistrementDetails(Enregistrement enregSelected)
         {
             var navigationParam = new NavigationParameters();
             navigationParam.Add("Enregistrement", enregSelected);
             NavigationService.NavigateAsync("EnregistrementDetails", navigationParam);
         }
 
-
+        //public EventHandler switcher_Toggled(object sender, ToggledEventArgs e)
+        //{
+        //    Console.WriteLine(String.Format("Switch is now {0}", e.Value));
+        //}
     }
 }

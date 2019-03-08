@@ -29,13 +29,13 @@
 
 
                 <Label VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="#Drink" FontSize="20"/>
-                <Switch Grid.Row="0" Grid.Column="1" VerticalOptions="Center" IsToggled="True" Margin="0, 0, 20, 0"/>
+                <Switch Grid.Row="0" Grid.Column="1" VerticalOptions="Center"  IsToggled="True" Margin="0, 0, 20, 0"/>
 
                 <Label VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2" Text="#Food" FontSize="20"/>
-                <Switch Grid.Row="0" Grid.Column="3" VerticalOptions="Center" IsToggled="True" Margin="0, 0, 20, 0"/>
+                <Switch Grid.Row="0" Grid.Column="3" VerticalOptions="Center"  IsToggled="True" Margin="0, 0, 20, 0"/>
 
                 <Label VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="4" Text="#ToSee" FontSize="20"/>
-                <Switch Grid.Row="0" Grid.Column="5" VerticalOptions="Center" IsToggled="True" Margin="0, 0, 20, 0"/>
+                <Switch Grid.Row="0" Grid.Column="5" VerticalOptions="Center"  IsToggled="True" Margin="0, 0, 20, 0"/>
             </Grid>
         </StackLayout>
 
