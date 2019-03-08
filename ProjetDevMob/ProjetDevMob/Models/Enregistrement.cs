@@ -15,7 +15,7 @@ namespace ProjetDevMob.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string Adress { get; set; }
-        public ImageSource Test { get; set; }
+        // public ImageSource Test { get; set; }
 
         public Enregistrement(string name, string description, string tag, string imageName, double latitude, double longitude, string adress)
         {
@@ -26,7 +26,7 @@ namespace ProjetDevMob.Models
             Latitude = latitude;
             Longitude = longitude;
             Adress = adress;
-            Test = ImageSource.FromFile("TestPhoto/" + ImageName);
+            // Test = ImageSource.FromFile("TestPhoto/" + ImageName);
         }
 
 

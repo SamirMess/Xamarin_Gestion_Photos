@@ -79,7 +79,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <!--<Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="red" WidthRequest="80" HeightRequest="80"/>-->
-                                <Image Grid.Row="0" Grid.RowSpan="2" BackgroundColor="red" Grid.Column="0" Source="{Binding Test}"  HeightRequest="80"/>
+                                <Image Grid.Row="0" Grid.RowSpan="2" BackgroundColor="red" Grid.Column="0" Source="{Binding ImageName}"  HeightRequest="80"/>
 
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"  FontSize="Large"/>
 

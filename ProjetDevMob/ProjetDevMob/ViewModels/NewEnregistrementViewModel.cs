@@ -28,8 +28,8 @@ namespace ProjetDevMob.ViewModels
         public DelegateCommand PrendrePhoto { get; private set; }
         public DelegateCommand CommandAddEnreg { get; private set; }
 
-        private ImageSource _photoImage;
-        public ImageSource PhotoImage
+        private string _photoImage;
+        public string PhotoImage
         {
             get { return _photoImage; }
             set { SetProperty(ref _photoImage, value); }
@@ -78,7 +78,6 @@ namespace ProjetDevMob.ViewModels
             _enregistrementService = enregistrementService;
             Title = "Nouveau";
             PrendrePhoto = new DelegateCommand(prendrePhotoAsync);
-            //LongueurImage = "auto";
             CommandAddEnreg = new DelegateCommand(AddEnregAsync, CanAddEnreg).ObservesProperty(() => Name).ObservesProperty(() => Description).ObservesProperty(() => Tag).ObservesProperty(() => PhotoImage);
         }
 
@@ -86,7 +85,7 @@ namespace ProjetDevMob.ViewModels
         {
             string dateTime = DateTime.Now.ToString("yyyy-dd-M_HH-mm-ss");
             await CrossMedia.Current.Initialize();
-            ImageName = dateTime + ".jpg";
+            // ImageName = dateTime + ".jpg";
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 Directory = "TestPhoto",
@@ -94,14 +93,15 @@ namespace ProjetDevMob.ViewModels
             });
             if (file != null)
             {
-                //ImageSource test = ImageSource.FromFile("TestPhoto/" + ImageName);
+                Console.WriteLine("Ennem path: " + file.Path);
+                PhotoImage = file.Path;
+                ImageName = file.Path;
 
-
-                PhotoImage = ImageSource.FromStream(() =>
-                {
-                    var stream = file.GetStream();
-                    return stream;
-                });
+                //PhotoImage = ImageSource.FromStream(() =>
+                //{
+                //    var stream = file.GetStream();
+                //    return stream;
+                //});
 
             }
 
@@ -124,7 +124,6 @@ namespace ProjetDevMob.ViewModels
                     }
 
                     Enregistrement Enreg = new Enregistrement(Name, Description, Tag, ImageName, position.Latitude, position.Longitude, adress);
-                    //_liteDBClient.InsertObjectInDB<Enregistrement>(Enreg, _dbCollectionEnreg);
                     _enregistrementService.AddEnregistrement(Enreg);
                     UserDialogs.Instance.Toast("Enregistrement avec succès!");
                     resetInputs();
