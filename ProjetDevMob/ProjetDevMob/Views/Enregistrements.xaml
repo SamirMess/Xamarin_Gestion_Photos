@@ -106,12 +106,6 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-
-                        <ViewCell.ContextActions>
-                            <MenuItem Command="{Binding BindingContext.CommandDeleteEnreg, Source={x:Reference ListEnreg}}" 
-                                      CommandParameter="{Binding .}" 
-                                      Text="Delete"/>
-                        </ViewCell.ContextActions>
                         <StackLayout
                                                         Margin="0, 20, 0, 10"
                             BackgroundColor="Black">
@@ -131,13 +125,32 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Image Grid.Row="0" Grid.RowSpan="2"  Grid.Column="0" Source="{Binding ImageName}"  HeightRequest="80"/>
+                                <Image 
+                                    Grid.Row="0" 
+                                    Grid.RowSpan="2"  
+                                    Grid.Column="0" 
+                                    Source="{Binding ImageName}"  
+                                    HeightRequest="80"/>
 
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"  Font="Bold,20"/>
+                                <Label 
+                                    Grid.Row="0" 
+                                    Grid.Column="1" 
+                                    Text="{Binding Name}"  
+                                    Font="Bold,20"/>
 
-                                <Label WidthRequest="200" Grid.Row="0" Grid.Column="2" Text="{Binding Date}"  HorizontalOptions="End" FontSize="Large"/>
+                                <Label 
+                                    WidthRequest="200" 
+                                    Grid.Row="0" 
+                                    Grid.Column="2" 
+                                    Text="{Binding Datee, StringFormat='{0:dd MMMM, yyyy}'}"  
+                                    HorizontalOptions="End" 
+                                    FontSize="Large"/>
 
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Tag, StringFormat='#{0}'}" FontSize="Large"/>
+                                <Label 
+                                    Grid.Row="1" 
+                                    Grid.Column="1" 
+                                    Text="{Binding Tag, StringFormat='#{0}'}" 
+                                    FontSize="Large"/>
                 
                             </Grid>
 

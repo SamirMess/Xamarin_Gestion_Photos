@@ -14,6 +14,12 @@ namespace ProjetDevMob.ViewModels
 {
 	public class EnregistrementsViewModel : ViewModelBase
 	{
+        //private string _dateString;
+        //public string DateString
+        //{
+        //    get { return _dateString; }
+        //    set { SetProperty(ref _dateString, value); }
+        //}
 
         private Dictionary<String, bool> toggles;
         private IEnregistrementService _enregistrementService;
@@ -59,6 +65,10 @@ namespace ProjetDevMob.ViewModels
             base.OnNavigatedTo(parameters);
             Enregistrements = new ObservableCollection<Enregistrement>(_enregistrementService.GetEnregistrements());
             FilteredEnreg = new ObservableCollection<Enregistrement>(_enregistrementService.GetEnregistrements());
+            //foreach (var el in Enregistrements)
+            //{
+
+            //}
         }
 
 		
@@ -118,5 +128,12 @@ namespace ProjetDevMob.ViewModels
                 FilteredEnreg.Add(el);
             }
         }
+
+        //private string generateDateString(DateTime dateStart)
+        //{
+        //    DateTime dateEnd = DateTime.Now.Date;
+
+        //    return (dateEnd - dateStart).TotalDays.ToString();
+        //}
     }
 }

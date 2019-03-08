@@ -125,7 +125,9 @@ namespace ProjetDevMob.ViewModels
                     DateTime heurrr = DateTime.Now;
                     string heure = heurrr.Hour.ToString() + "h" + heurrr.Minute.ToString();
 
-                    Enregistrement Enreg = new Enregistrement(Name, Description, Tag, ImageName, position.Latitude, position.Longitude, adress, heure);
+                    DateTime datee = DateTime.Now;
+
+                Enregistrement Enreg = new Enregistrement(Name, Description, Tag, ImageName, position.Latitude, position.Longitude, adress, heure, datee);
                     _enregistrementService.AddEnregistrement(Enreg);
                     UserDialogs.Instance.Toast("Enregistrement avec succès!");
                     resetInputs();
