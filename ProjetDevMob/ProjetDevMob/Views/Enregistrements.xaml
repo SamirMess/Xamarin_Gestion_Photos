@@ -29,20 +29,71 @@
 
 
                 <Label VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="#Drink" FontSize="20"/>
-                <Switch Grid.Row="0" Grid.Column="1" VerticalOptions="Center"  IsToggled="True" Margin="0, 0, 20, 0"/>
+                <Switch Grid.Row="0" Grid.Column="1" VerticalOptions="Center" IsToggled="True" Margin="0, 0, 20, 0">
+                    <Switch.Behaviors>
+                        <b:EventToCommandBehavior EventName="Toggled" Command="{Binding ToggleCommand}" CommandParameter="Drink"/>
+                    </Switch.Behaviors>
+                </Switch>
 
                 <Label VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2" Text="#Food" FontSize="20"/>
-                <Switch Grid.Row="0" Grid.Column="3" VerticalOptions="Center"  IsToggled="True" Margin="0, 0, 20, 0"/>
+                <Switch Grid.Row="0" Grid.Column="3" VerticalOptions="Center" IsToggled="True" Margin="0, 0, 20, 0">
+                    <Switch.Behaviors>
+                        <b:EventToCommandBehavior EventName="Toggled" Command="{Binding ToggleCommand}" CommandParameter="Food"/>
+                    </Switch.Behaviors>
+                </Switch>
 
                 <Label VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="4" Text="#ToSee" FontSize="20"/>
-                <Switch Grid.Row="0" Grid.Column="5" VerticalOptions="Center"  IsToggled="True" Margin="0, 0, 20, 0"/>
+                <Switch Grid.Row="0" Grid.Column="5" VerticalOptions="Center" IsToggled="True" Margin="0, 0, 20, 0">
+                    <Switch.Behaviors>
+                        <b:EventToCommandBehavior EventName="Toggled" Command="{Binding ToggleCommand}" CommandParameter="ToSee"/>
+                    </Switch.Behaviors>
+                </Switch>
+
+                <Label
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                Text="&#xf062;"
+                TextColor="Black"
+                FontSize="30"
+                Grid.Row="0"
+                Grid.Column="6">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding SortUp}"/>
+                    </Label.GestureRecognizers>
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String"
+                        Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+                    </Label.FontFamily>
+                </Label>
+                <Label
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                Text="&#xf063;"
+                TextColor="Black"
+                FontSize="30"
+                Grid.Row="0"
+                Grid.Column="7">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding SortDown}"/>
+                    </Label.GestureRecognizers>
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String"
+                        Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+                    </Label.FontFamily>
+                </Label>
             </Grid>
         </StackLayout>
 
 
         <ListView
             x:Name="ListEnreg"
-            ItemsSource="{Binding Enregistrements}"
+            ItemsSource="{Binding FilteredEnreg}"
             HasUnevenRows="True"
             SelectionMode="Single">
 
@@ -61,11 +112,13 @@
                                       CommandParameter="{Binding .}" 
                                       Text="Delete"/>
                         </ViewCell.ContextActions>
-
                         <StackLayout
-                            Margin="0, 20, 0, 10"
-                            BackgroundColor="Azure"
+                                                        Margin="0, 20, 0, 10"
+                            BackgroundColor="Black">
+                        
+                        <StackLayout
                             Orientation="Horizontal"
+                            BackgroundColor="#E5E8E8"
                             HorizontalOptions="FillAndExpand">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -78,17 +131,17 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <!--<Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="red" WidthRequest="80" HeightRequest="80"/>-->
-                                <Image Grid.Row="0" Grid.RowSpan="2" BackgroundColor="red" Grid.Column="0" Source="{Binding ImageName}"  HeightRequest="80"/>
+                                <Image Grid.Row="0" Grid.RowSpan="2"  Grid.Column="0" Source="{Binding ImageName}"  HeightRequest="80"/>
 
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"  FontSize="Large"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"  Font="Bold,20"/>
 
-                                <Label BackgroundColor="Green" WidthRequest="200" Grid.Row="0" Grid.Column="2" Text="{Binding Date}"  HorizontalOptions="End" FontSize="Large"/>
+                                <Label WidthRequest="200" Grid.Row="0" Grid.Column="2" Text="{Binding Date}"  HorizontalOptions="End" FontSize="Large"/>
 
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Tag}" FontSize="Large"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Tag, StringFormat='#{0}'}" FontSize="Large"/>
                 
                             </Grid>
 
+                        </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
