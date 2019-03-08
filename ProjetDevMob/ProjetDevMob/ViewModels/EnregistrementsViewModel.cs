@@ -102,8 +102,6 @@ namespace ProjetDevMob.ViewModels
         }
         private void TrierUp()
         {
-            //ObservableCollection <Enregistrement> newList = FilteredEnreg.OrderByDescending(x => x.Description);
-            //this.FilteredEnreg = < newList;
             var tmpList = FilteredEnreg.OrderByDescending(x => x.Name).ToList();
             FilteredEnreg.Clear();
             foreach (var el in tmpList)
